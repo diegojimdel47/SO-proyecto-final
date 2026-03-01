@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Procesos</title>
+  </head>
+
+  <body>
+    <div class="app">
+
+      <header class="topbar">
+        <div>
+          <h1>Gestión de Procesos</h1>
+          <p class="subtitle">Dashboard cliente para administrar servidores y procesos.</p>
+        </div>
+        <div class="status-bar">
+          <span id="connPill" class="pill subtle">Estado: Listo</span>
+        </div>
+      </header>
+
+      <section class="grid">
+
+        <div class="card">
+          <h2>Servidores</h2>
+
+          <div class="field">
+            <label>Modo</label>
+            <select id="mode">
+              <option value="mock">Mock</option>
+              <option value="api">API real</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>URL API</label>
+            <input id="baseUrl" value="http://  localhost:9000" />
+          </div>
+
+          <div class="field">
+            <label>Servidor</label>
+            <select id="serverSelect"></select>
+          </div>
+
+          <div class="actions">
+            <button id="btnDiscover">Descubrir</button>
+            <button id="btnRefresh">Actualizar</button>
+            <button id="btnMetrics">Métricas</button>
+          </div>
+
+          <div class="inline-status">
+            <span id="statusDot" class="dot"></span>
+            <span id="statusText">Listo</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="summary">
+            <div>
+              <small>Servidor</small>
+              <div id="kpiServer">—</div>
+            </div>
+            <div>
+              <small>Procesos</small>
+              <div id="kpiCount">0</div>
+            </div>
+            <div>
+              <small>Última actualización</small>
+              <div id="kpiLast">—</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROCESOS -->
+        <div class="card">
+          <h2>Procesos</h2>
+
+          <input id="search" placeholder="Buscar por nombre o PID..." />
+
+          <div class="actions">
+            <input id="startName" placeholder="Proceso a iniciar (ej. chrome)" />
+            <button id="btnStart">Iniciar</button>
+            <button id="btnStop">Detener</button>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>PID</th>
+                  <th>Nombre</th>
+                  <th>Estado</th>
+                  <th>CPU</th>
+                  <th>RAM</th>
+                </tr>
+              </thead>
+              <tbody id="procBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Logs</h2>
+        <pre id="logs" class="logs"></pre>
+      </section>
+
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
